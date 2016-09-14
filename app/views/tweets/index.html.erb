@@ -1,0 +1,4 @@
+<h1>GIller</h1>
+<% @tweets.each do |el| %>
+<h3><a href="/tweets/<%=el.id %>"><%= "@#{el.title}: #{el.description}" %></a></h3>
+<% end %>
