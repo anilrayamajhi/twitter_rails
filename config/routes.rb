@@ -1,6 +1,33 @@
 Rails.application.routes.draw do
   root 'tweets#index'
-  get 'tweets/:id' => 'tweets#show'
+
+
+  #all photoes:
+  get '/tweets' => 'tweets#index', as: 'tweets'
+
+  #show a new photo form:
+  get '/tweets/new' => 'tweets#new', as: 'new_tweet'
+
+  #a single photo:
+  # get ({'/photos/:id' => 'photos#show', 'as' => 'photo'}) #same as below
+  get 'tweets/:id' => 'tweets#show', as: 'tweet'
+
+  #save new photo to database
+  get '/tweets/' => 'tweets#show'
+  #execute on post event
+
+  #save new photo to database
+  post '/tweets/' => 'tweets#create'
+
+  #show an edit photo form
+  get '/tweets/:id/edit' => 'tweets#edit', as: 'edit_tweet'
+
+  #update existing photo in database
+  patch '/tweet/:id' => 'tweets#update'
+
+  #delete a photo
+  delete '/tweet/:id' => 'tweets#destroy', as: 'destroy_tweet'
+  #use destroy coz delete is rails method and destroy is ruby method, name wont conflict
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
